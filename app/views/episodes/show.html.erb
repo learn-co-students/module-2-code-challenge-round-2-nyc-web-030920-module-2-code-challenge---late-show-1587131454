@@ -1,12 +1,13 @@
 <h1>Date:<%= @episode.date %></h1>
+<% if @episode.appearances.length > 0 %>
 <% sum = 0 %>
 <% @episode.appearances.each do |appearance| %>
     <% sum += appearance.rating %>
     <% end %>
     <% avg = sum / @episode.appearances.length %>
 Average appearance rating: <%= avg %><br>
+<%end%>
 
-
-<% @episode.guests.uniq.each do |guest| %>
+<% @episode.guests.each do |guest| %>
     <%= link_to(guest.name, guest) %>
     <% end %>
